@@ -6,7 +6,6 @@ public class Product
     public string Name { get; set; }
     public string Description { get; set; }
     public string Photo { get; set; }
-    public double Price { get; set; }
-    public List<ProductCategory> Categorys { get; set; }
+    public ICollection<JunctionProductCategory> ProductCategories { get; set; }
     public List<ProductVariant> Variants { get; set; }
 }

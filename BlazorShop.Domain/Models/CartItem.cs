@@ -1,6 +1,6 @@
-﻿namespace BlazorShop.Domain.DTO;
+﻿namespace BlazorShop.Domain.Models;
 
-public class ProductCartDTO
+public class CartItem
 {
     public int Id { get; set; }
     public string Name { get; set; }
