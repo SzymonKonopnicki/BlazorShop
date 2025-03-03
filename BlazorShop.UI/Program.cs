@@ -1,6 +1,12 @@
+using BlazorShop.Application;
+using BlazorShop.Infrastructure;
 using BlazorShop.UI.Components;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddApplicationDI();
+builder.Services.AddInfrastructureDI();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()

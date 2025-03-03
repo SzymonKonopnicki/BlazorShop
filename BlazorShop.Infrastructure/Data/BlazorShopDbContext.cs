@@ -1,11 +1,17 @@
-﻿using BlazorShop.Domain.Models;
+﻿using BlazorShop.Application.Interfaces;
+using BlazorShop.Domain.Models;
 using BlazorShop.Infrastructure.Data.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace BlazorShop.Infrastructure.Data;
 
-public class BlazorShopDbContext : DbContext
+public class BlazorShopDbContext : DbContext, IBlazorShopDbContext
 {
+    public BlazorShopDbContext(DbContextOptions<BlazorShopDbContext> options) : base(options)
+    {
+
+    }
+
     public DbSet<Address> Addresses { get; set; }
     public DbSet<Order> Orders{ get; set; }
     public DbSet<OrderItem> OrderItems { get; set; }
@@ -18,9 +24,7 @@ public class BlazorShopDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        
         optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=BlazorShopDb;Trusted_Connection=True;");
-
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
